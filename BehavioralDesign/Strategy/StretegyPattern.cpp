@@ -1,4 +1,5 @@
 #include<iostream>
+#include"Structural design/DecoratorPattern.cpp"
 
 class IQuackBehavior
 {
@@ -164,7 +165,13 @@ int main()
 	(NoQuackingFlyingSwimingDuck.getSwimmingBehavior())->Swim();
 	(NoQuackingFlyingSwimingDuck.getFlyingBehavior())->fly();
 	(NoQuackingFlyingSwimingDuck.getQuackingBehavior())->quack();
-
+	notifier* notifierApp = new ApplicationNotifier();
+	//notifierApp->notify();
+	//notifierApp->sendMessage();
+	notifierApp = new SmsNotifier(notifierApp);
+	notifierApp->notify();
+	notifierApp->sendMessage();
+	delete notifierApp;
 	return 0;
 }
 
